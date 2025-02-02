@@ -27,7 +27,9 @@ interface SupabaseAuthProviderProps {
   children: React.ReactNode;
 }
 
-export const SupabaseAuthProvider: React.FC<SupabaseAuthProviderProps> = ({ children }) => {
+export const SupabaseAuthProvider: React.FC<SupabaseAuthProviderProps> = ({
+  children,
+}) => {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const removeAllCartStorage = useCartStore((s) => s.removeAllProducts);
@@ -59,12 +61,14 @@ export const SupabaseAuthProvider: React.FC<SupabaseAuthProviderProps> = ({ chil
               cart: CartItems;
             };
 
-            const storageCarts = Object.entries(cart).map(([productId, productValue]) => ({
-              id: nanoid(),
-              productId,
-              quantity: productValue.quantity,
-              userId: data.user.id,
-            }));
+            const storageCarts = Object.entries(cart).map(
+              ([productId, productValue]) => ({
+                id: nanoid(),
+                productId,
+                quantity: productValue.quantity,
+                userId: data.user.id,
+              }),
+            );
             // console.log("!!! storageCart", storageCarts)
 
             supabase
@@ -125,5 +129,9 @@ export const SupabaseAuthProvider: React.FC<SupabaseAuthProviderProps> = ({ chil
     return () => subscription.unsubscribe();
   }, []);
 
-  return <SupabaseAuthContext.Provider value={{ user, session }}>{children}</SupabaseAuthContext.Provider>;
+  return (
+    <SupabaseAuthContext.Provider value={{ user, session }}>
+      {children}
+    </SupabaseAuthContext.Provider>
+  );
 };

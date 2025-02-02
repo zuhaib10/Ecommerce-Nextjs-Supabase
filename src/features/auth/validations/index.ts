@@ -11,7 +11,8 @@ export const authSchema = z.object({
     })
     .max(100)
     .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/, {
-      message: "Password must contain at least 1 lowercase letter, 1 uppercase letter, 1 number, and be at least 8 characters long.",
+      message:
+        "Password must contain at least 1 lowercase letter, 1 uppercase letter, 1 number, and be at least 8 characters long.",
     }),
 });
 
@@ -27,6 +28,7 @@ export const signupSchema = z.object({
     })
     .max(100)
     .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/, {
-      message: "Password must contain at least 1 lowercase letter, 1 uppercase letter, 1 number, and be at least 8 characters long.",
+      message:
+        "Password must contain at least 1 lowercase letter, 1 uppercase letter, 1 number, and be at least 8 characters long.",
     }),
 });

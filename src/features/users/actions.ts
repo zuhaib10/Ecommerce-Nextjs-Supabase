@@ -26,11 +26,13 @@ export const getCurrentUserSession = async () => {
   return userResponse.data.session;
 };
 
-export const isAdmin = (currentUser: User | null) => currentUser?.app_metadata.isAdmin;
+export const isAdmin = (currentUser: User | null) =>
+  currentUser?.app_metadata.isAdmin;
 
 export const getUser = async ({ userId }: { userId: string }) => {
   const cookieStore = cookies();
-  const adminAuthClient = createClient({ cookieStore, isAdmin: true }).auth.admin;
+  const adminAuthClient = createClient({ cookieStore, isAdmin: true }).auth
+    .admin;
 
   try {
     const { data, error } = await adminAuthClient.getUserById(userId);
@@ -40,9 +42,16 @@ export const getUser = async ({ userId }: { userId: string }) => {
   }
 };
 
-export const listUsers = async ({ page = 1, perPage = 10 }: { page?: number; perPage?: number }) => {
+export const listUsers = async ({
+  page = 1,
+  perPage = 10,
+}: {
+  page?: number;
+  perPage?: number;
+}) => {
   const cookieStore = cookies();
-  const adminAuthClient = createClient({ cookieStore, isAdmin: true }).auth.admin;
+  const adminAuthClient = createClient({ cookieStore, isAdmin: true }).auth
+    .admin;
 
   const {
     data: { users },
@@ -54,9 +63,14 @@ export const listUsers = async ({ page = 1, perPage = 10 }: { page?: number; per
   return users;
 };
 
-export const createUser = async ({ email, name, password }: AdminUserFormData) => {
+export const createUser = async ({
+  email,
+  name,
+  password,
+}: AdminUserFormData) => {
   const cookieStore = cookies();
-  const adminAuthClient = createClient({ cookieStore, isAdmin: true }).auth.admin;
+  const adminAuthClient = createClient({ cookieStore, isAdmin: true }).auth
+    .admin;
 
   try {
     const existedUser = await db.query.profiles.findFirst({
