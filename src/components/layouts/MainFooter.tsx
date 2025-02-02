@@ -65,7 +65,7 @@ function MainFooter({}: Props) {
       ],
     },
     {
-      title: "About HIYORI",
+      title: "About ergospace",
       items: [
         {
           title: "Our Story",

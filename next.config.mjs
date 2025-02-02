@@ -13,6 +13,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "source.unsplash.com",
       },
+      {
+        protocol: "https",
+        hostname: "hiyori-backpack.s3.us-west-2.amazonaws.com",
+      },
     ],
   },
   experimental: {

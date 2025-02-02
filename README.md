@@ -29,8 +29,6 @@
 - Products Stocking
 - Products Variants
 
-
-
 ## Technologies
 
 - **Next.js 14:** A React framework for building user interfaces with server-side rendering and static site generation capabilities.

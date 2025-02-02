@@ -34,23 +34,11 @@ function UserNav() {
       {user ? (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button
-              variant="ghost"
-              className="relative h-8 w-8 rounded-full focus:ring-0 border-0"
-            >
+            <Button variant="ghost" className="relative h-8 w-8 rounded-full focus:ring-0 border-0">
               <Avatar className="h-8 w-8 focus:ring-0 border-0">
                 {/* TODO: UPDATE AVATOR IMAGE & NAME */}
-                <AvatarImage
-                  src="/avatars/01.png"
-                  alt={getNameInitials(
-                    (user.user_metadata.name as string) ?? "Name",
-                  )}
-                />
-                <AvatarFallback>
-                  {getNameInitials(
-                    (user.user_metadata.name as string) ?? "Name",
-                  )}
-                </AvatarFallback>
+                <AvatarImage src="/avatars/01.png" alt={getNameInitials((user.user_metadata.name as string) ?? "Name")} />
+                <AvatarFallback>{getNameInitials((user.user_metadata.name as string) ?? "Name")}</AvatarFallback>
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
@@ -58,12 +46,8 @@ function UserNav() {
           <DropdownMenuContent className="w-56" align="end" forceMount>
             <DropdownMenuLabel className="font-normal">
               <div className="flex flex-col space-y-1">
-                <p className="text-sm font-medium leading-none">
-                  {user.user_metadata.name || "username"}
-                </p>
-                <p className="text-xs leading-none text-muted-foreground">
-                  {user.email}
-                </p>
+                <p className="text-sm font-medium leading-none">{user.user_metadata.name || "username"}</p>
+                <p className="text-xs leading-none text-muted-foreground">{user.email}</p>
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
